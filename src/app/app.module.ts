@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { FooterNavComponent } from './footer-nav/footer-nav.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducers/reducer-map';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -13,7 +16,11 @@ import { FooterNavComponent } from './footer-nav/footer-nav.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
