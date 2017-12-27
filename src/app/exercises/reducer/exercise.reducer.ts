@@ -1,5 +1,5 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { CREATE, Create, DELETE, ExerciseActions, Update, UPDATE } from './exercise.actions';
+import { CREATE, Create, DELETE, ExerciseActions, GET, Update, UPDATE } from './exercise.actions';
 import { createFeatureSelector } from '@ngrx/store';
 
 export const featureNameExercise: string = 'exercise';
@@ -32,6 +32,9 @@ export const initialExerciseState: State = exerciseAdapter.getInitialState({
 export function exerciseReducer(state: State = initialExerciseState,
                                 action: ExerciseActions) {
   switch (action.type) {
+    case GET:
+      console.log(GET, action);
+      return state;
     case CREATE:
       return exerciseAdapter.addOne((action as Create).exercise, state);
     case UPDATE:

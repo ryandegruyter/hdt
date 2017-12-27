@@ -6,6 +6,7 @@ import * as actions from './reducer/exercise.actions';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { Exercise } from './reducer/exercise.reducer';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'hdt-exercises',
@@ -20,7 +21,7 @@ export class ExercisesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.exercises = this.store.select(fromExercise.selectAll);
+    this.store.dispatch(new actions.Get());
   }
 
   create(): void {
